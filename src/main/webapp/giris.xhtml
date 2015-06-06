@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title >Tahsilat Uygulaması</title>
+    </h:head>
+    <h:body>
+        
+        <h:form  id="girisForm">
+            
+            <p:panel header="Giriş Bilgileri" style=" width: 500px;  margin: 0px auto; margin-top: 100 px; text-align:center">
+                
+                <p:messages/>
+                <p:panelGrid columns="3" style="margin:0px auto">
+               
+                <p:column style="width:150px">
+                    <p:outputLabel value="Kullanıcı adı"/>
+                  
+                </p:column>
+                  <p:column  style="width:150px">
+                      <p:inputText id="kulad" label="Kullanıcı adı" value="#{kisiBean.kisi.kullaniciAd}" required="true">
+                      <p:ajax event="keyup" update="kuladMsg"/>
+                      </p:inputText>
+                  </p:column>
+                
+                 <p:column style="width:150px">
+                     <p:message id="kuladMsg" for="kulad"/>
+                   
+               </p:column>
+             
+                 <p:column style="width:150px">
+                    <p:outputLabel value="Şifre"/>
+                  
+                </p:column>
+                  <p:column  style="width:200px">
+                      <p:password id="sifre" label="Şifre" value="#{kisiBean.kisi.sifre}" required="true" redisplay="true">
+                      <p:ajax event="keyup" update="sifreMsg"/>
+                      <f:validateLength maximum="20" minimum="4"/>
+                      </p:password>
+                  </p:column>
+                
+                 <p:column style="width:150px">
+                     <p:message id="sifreMsg" for="sifre"/>
+                   
+               </p:column>
+                   
+                         <p:column style="width:150px">
+                    <p:outputLabel />
+                  
+                </p:column>
+                     <p:column style="width:150px">
+                         <p:commandButton value="Giriş" action="#{kisiBean.girisKontrol()}" update="girisForm"/>
+                    <p:outputLabel/>
+                  
+                </p:column>
+                     <p:column style="width:150px">
+                    <p:outputLabel />
+                  
+                </p:column>
+                   
+                </p:panelGrid>
+            </p:panel>
+            
+            
+            
+        </h:form>
+    </h:body>
+</html>
+

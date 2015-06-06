@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+
+<p:layout fullPage="true">
+<p:layoutUnit position="north" size="100" resizable="true"
+closable="true" collapsible="true">
+     <ui:insert name="top">
+         
+         <table border="0" bgcolor="yellow" width="100%" >
+             
+             <tr >
+                 <td  width="20%"  >
+                     <p:graphicImage library="img" name="ptt.png" style="width:60%"/>
+                     
+                 </td>
+                 
+          <td width="80%">
+             <center><font size="6" color="red">TAHSİLAT UYGULAMASI</font></center>
+          </td>
+             </tr>
+             
+             
+         </table>
+     
+     
+     
+     </ui:insert>
+</p:layoutUnit>
+    
+<p:layoutUnit position="south" size="120" 
+resizable="true" closable="true" collapsible="true">
+   <ui:insert name="bottom">
+<h:outputText value="Copyright @ 2015 by Özlem GEDİKLİ"  />
+</ui:insert>
+</p:layoutUnit>
+    
+<p:layoutUnit position="west" size="200"
+resizable="true" closable="true"
+collapsible="true" >
+ <ui:insert name="left">
+<h:form>
+    <p:panelMenu model="#{menuBean.menumodel}"/>
+    <!--
+    <p:panelMenu style="width: 180px">
+      
+        <p:submenu label="Kişi İşlemleri">
+            <p:menuitem value="Kişi Ekle" outcome="kisiEkle.xhtml?faces-redirect=true" icon="ui-icon-home" />
+            <p:menuitem value="Kişi Listele" action="" icon="ui-icon-wrench"/>
+            <p:menuitem value="Kişi Ara" outcome="kisiara.xhtml?faces-redirect=true" icon="ui-icon-home" />
+        </p:submenu>
+        <p:separator/>
+        
+             <p:submenu label="Giriş">
+            <p:menuitem value="Kişi Ekle" outcome="kisiEkle.xhtml?faces-redirect=true" icon="ui-icon-home" />
+           
+        </p:submenu>
+             <p:submenu label="Giriş-Çıkış İşlemleri">
+            <p:menuitem value="Giriş" outcome="giris.xhtml?faces-redirect=true" icon="ui-icon-person" />
+            <p:menuitem value="Çıkış" action="" icon="ui-icon-close" />
+        </p:submenu>  
+        
+    </p:panelMenu>
+  -->
+  <p:themeSwitcher style="width:165 px" value="#{tercih.secilitema}">
+      
+      <f:selectItem itemLabel="Tema Seçiniz" itemValue=""/>
+      <f:selectItems value="#{tercih.temaListesi}"/>
+      <p:ajax listener="#{tercih.temaKaydet()}"/>
+  </p:themeSwitcher>
+</h:form>
+ </ui:insert>
+</p:layoutUnit>
+    
+
+    
+<p:layoutUnit id="centerUnit" position="center">
+     <ui:insert name="content">
+<h:outputText value="KişiEkle Uygulaması" />
+</ui:insert>
+</p:layoutUnit>
+</p:layout>
+
+    </h:body>
+
+</html>
