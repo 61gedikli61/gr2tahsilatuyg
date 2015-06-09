@@ -1,6 +1,8 @@
 
 package tr.gov.ptt.gr2tahsilatuygulama.bean;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -19,13 +21,25 @@ public class KisiBean
     @EJB
     private KisiService kisiservice;
     
+    private List<String> temaListesi;
+
+    public List<String> getTemaListesi() {
+        return temaListesi;
+    }
     
-      public KisiBean() 
+    public KisiBean() 
     {
      kisi=new Kisi();
-     kisi.setKullaniciAd("ogedikli");
+
+    
+     
+     kisi.setTema("bluesky");
+     temaListesi=new ArrayList<>();
+     temalistesiDoldur();
+      kisi.setKullaniciAd("ogedikli");
      kisi.setSifre("616161");
     }
+    
     public Kisi getKisi() 
     {
         return kisi;
@@ -34,14 +48,31 @@ public class KisiBean
     public void setKisi(Kisi kisi) {
         this.kisi = kisi;
     }
- public String girisKontrol()
- {
+    public void temalistesiDoldur()
+    {
+         temaListesi=new ArrayList<String>();
+        temaListesi.add("afterdark");
+          temaListesi.add("afternoon");
+            temaListesi.add("afterwork");
+              temaListesi.add("bluesky");
+                temaListesi.add("flick");
+                  temaListesi.add("blitzer");
+                   temaListesi.add("sunny");
+                    temaListesi.add("vader");
+                     temaListesi.add("sam");
+                   temaListesi.add("redmond");
+                      temaListesi.add("rocket");
+                        temaListesi.add("trontastic");
+                          temaListesi.add("cruze");
+    }
+    public String girisKontrol()
+    {
     Kisi vtkisi= kisiservice.girisKontrol(this.kisi);
     if(vtkisi!=null)
     {   this.kisi=vtkisi;
        HttpSession session=JSFUtil.getSession();
        session.setAttribute("username", vtkisi.getKullaniciAd());  
-       System.out.println("ddddd");
+      
        return "menu.xhtml?faces-redirect=true" ;
     }
     else
@@ -57,7 +88,10 @@ public class KisiBean
        JSFUtil.sessionBitir();
        return "giris.xhtml?faces-redirect=true";
     }
-    
+    public void temaKaydet()
+    {
+        kisiservice.kisiguncelle(kisi);
+    }
     
     
 }

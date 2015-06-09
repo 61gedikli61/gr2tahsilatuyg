@@ -55,32 +55,12 @@ collapsible="true" >
  <ui:insert name="left">
 <h:form>
     <p:panelMenu model="#{menuBean.menumodel}"/>
-    <!--
-    <p:panelMenu style="width: 180px">
-      
-        <p:submenu label="Kişi İşlemleri">
-            <p:menuitem value="Kişi Ekle" outcome="kisiEkle.xhtml?faces-redirect=true" icon="ui-icon-home" />
-            <p:menuitem value="Kişi Listele" action="" icon="ui-icon-wrench"/>
-            <p:menuitem value="Kişi Ara" outcome="kisiara.xhtml?faces-redirect=true" icon="ui-icon-home" />
-        </p:submenu>
-        <p:separator/>
-        
-             <p:submenu label="Giriş">
-            <p:menuitem value="Kişi Ekle" outcome="kisiEkle.xhtml?faces-redirect=true" icon="ui-icon-home" />
-           
-        </p:submenu>
-             <p:submenu label="Giriş-Çıkış İşlemleri">
-            <p:menuitem value="Giriş" outcome="giris.xhtml?faces-redirect=true" icon="ui-icon-person" />
-            <p:menuitem value="Çıkış" action="" icon="ui-icon-close" />
-        </p:submenu>  
-        
-    </p:panelMenu>
-  -->
-  <p:themeSwitcher style="width:165 px" value="#{tercih.secilitema}">
+   
+    <p:themeSwitcher style="width:165 px" value="#{kisiBean.kisi.tema}">
       
       <f:selectItem itemLabel="Tema Seçiniz" itemValue=""/>
-      <f:selectItems value="#{tercih.temaListesi}"/>
-      <p:ajax listener="#{tercih.temaKaydet()}"/>
+      <f:selectItems value="#{kisiBean.temaListesi}"/>
+      <p:ajax listener="#{kisiBean.temaKaydet()}"/>
   </p:themeSwitcher>
 </h:form>
  </ui:insert>
